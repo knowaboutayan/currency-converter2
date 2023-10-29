@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Input from "../components/Input"
 import useCurrencyConvert from "../Hook/useCurrencyConvert";
 import ErrorPage from "./ErrorPage";
@@ -7,31 +7,28 @@ import "./CurrencyConverter.css"
 const CurrencyConverter = () => {
     let [fromAmount, setFromAmount] = useState("");
     let [toAmount, setToAmount] = useState("");
-
     let [fromCurrency, setFromCurrency] = useState("USD");
     let [toCurrency, setToCurrency] = useState("INR");
     const currencyData = useCurrencyConvert(fromCurrency);
     const options = Object.keys(currencyData);
 
-    const swapCurrency = () => {
-
-
-        // Use a temporary variable to hold the value of fromCurrency
-
-
-        setFromCurrency(toCurrency);
-        setToCurrency(fromCurrency);
-
-    }
-
-
-
-    const calcu = () => {
+    const convert = () => {
         let x = fromAmount * currencyData[toCurrency]
         setToAmount(x);
     }
 
-    useEffect(() => calcu(), [toAmount, toCurrency, fromAmount, fromCurrency, swapCurrency, calcu]);
+    const swapCurrency = useCallback(() => {
+        // Use a temporary variable to hold the value of fromCurrency
+
+        setFromCurrency(toCurrency);
+        setToCurrency(fromCurrency);
+
+    }, [fromCurrency,toCurrency]);
+
+    useEffect(() => convert(), [toAmount, toCurrency, fromAmount, fromCurrency, swapCurrency]);
+    if (currencyData === 'err') {
+        return <ErrorPage />
+    }
     return (
         <div className="converter-container">
             <h1>Currency Converter</h1>
@@ -45,7 +42,7 @@ const CurrencyConverter = () => {
                     <label className="input-label">Converted Amount:</label>
                     <Input className="input-field" title="Converted Amount" amount={toAmount} currency={toCurrency} setCurrency={(to) => setToCurrency(to)} disabledStatus={true} currancyOptions={options} currentState={fromCurrency} />
                 </div>
-                <button onClick={calcu}>Convert</button>
+                <button onClick={convert}>Convert</button>
             </form>
         </div>
     )

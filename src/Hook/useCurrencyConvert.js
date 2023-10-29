@@ -7,11 +7,11 @@ const useCurrencyConverter = (fromCurrency) => {
         try {
             const response = await fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=fca_live_1aMFSOBXrr4w25bjBEEBTk9C0NryWuX4odHxRRZD&currencies=&base_currency=${fromCurrency}`);
             const myData = await response.json();
-     
+            if(!response.ok) return 'err';
             console.log(myData.data)
             setData(myData.data);
         } catch (error) {
-            console.log('err');
+           return 'err'
         }
     };
 
