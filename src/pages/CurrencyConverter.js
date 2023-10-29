@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback,  useState } from "react";
 import Input from "../components/Input"
 import useCurrencyConvert from "../Hook/useCurrencyConvert";
 import ErrorPage from "./ErrorPage";
@@ -22,10 +22,12 @@ const CurrencyConverter = () => {
 
         setFromCurrency(toCurrency);
         setToCurrency(fromCurrency);
+        setFromAmount(toAmount)
+        setToAmount(fromAmount)
 
-    }, [fromCurrency,toCurrency]);
+    }, [fromCurrency,toCurrency,toAmount,fromAmount]);
 
-    useEffect(() => convert(), [toAmount, toCurrency, fromAmount, fromCurrency, swapCurrency]);
+
     if (currencyData === 'err') {
         return <ErrorPage />
     }
@@ -37,12 +39,12 @@ const CurrencyConverter = () => {
                     <label className="input-label">Enter amount:</label>
                     <Input className="input-field" title="Enter amount" amount={fromAmount} setAmount={(from) => setFromAmount(from)} currency={fromCurrency} setCurrency={(from) => setFromCurrency(from)} disabledStatus={false} currancyOptions={options} currentState={toCurrency} />
                 </div>
-                <button onClick={swapCurrency}>Swap</button>
+                <button onClick={swapCurrency} className="swap"><i className="fa fa-exchange "/></button>
                 <div className="input-container">
                     <label className="input-label">Converted Amount:</label>
                     <Input className="input-field" title="Converted Amount" amount={toAmount} currency={toCurrency} setCurrency={(to) => setToCurrency(to)} disabledStatus={true} currancyOptions={options} currentState={fromCurrency} />
                 </div>
-                <button onClick={convert}>Convert</button>
+                <button onClick={convert}>Convert {fromCurrency} to {toCurrency}</button>
             </form>
         </div>
     )
