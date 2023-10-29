@@ -1,0 +1,119 @@
+.money-input-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #73757675;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 5px rgba(175, 170, 170, 0.697);
+    border: 1px solid ghostwhite;
+}
+
+/* Style for the money icon */
+i {
+
+    margin-right: 10px;
+    color: #f0f0f0;
+}
+
+/* Style for the input element */
+.money-input {
+    width: 200px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #01ffaa;
+    border: 2px solid #a9bac4;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* Style for the select element */
+.currency-select {
+    padding: 10px;
+    background-color: rgba(115, 115, 115, 0.574);
+    width: 100px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    outline: none;
+
+
+}
+
+/* Style for the container div */
+.converter-container {
+
+    display: flex;
+    flex-direction: column;
+    color: wheat;
+    align-items: center;
+    justify-content: center;
+    background-image: url(https://img.freepik.com/free-photo/economy-word-rolls-money_23-2148546868.jpg?w=740&t=st=1698607767~exp=1698608367~hmac=f6202500618d3b2b6dd30e03589c514dc06dc6ec22e020ad8b91c158b8289d23);
+    background-position: center;
+    background-size: cover;
+
+    height: 100vh;
+}
+
+/* Style for the form */
+form {
+    backdrop-filter: blur(5px);
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for the input components */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Style for input labels */
+.input-label {
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 10px;
+    color: #d7ebff;
+}
+
+/* Style for input fields */
+.input-field {
+    width: 100%;
+    padding: 10px;
+
+    border-radius: 5px;
+    outline: none;
+
+    font-size: 25px;
+}
+
+/* Style for buttons */
+button {
+    padding: 12px 24px;
+    background-color: #3f32f6;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2629d6;
+}
+
+.swap {
+    height: 50px;
+    width: 50px;
+    padding: 5px;
+    border-radius: 50px;
+
+}
